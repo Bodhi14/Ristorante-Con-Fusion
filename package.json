@@ -1,7 +1,7 @@
 {
-  "name": "confusion",
+  "name": "restaurante-con-fusion",
   "version": "1.0.0",
-  "description": "React Application  -> Learning from Coursera",
+  "description": "React Application -> Learning from Coursera",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
@@ -12,7 +12,8 @@
     "react-intellisense": "0.0.1",
     "react-popper": "2.3.0",
     "react-scripts": "4.0.0",
-    "reactstrap": "9.1.4"
+    "reactstrap": "9.1.4",
+    "vercel": "28.9.0"
   },
   "devDependencies": {
     "@babel/runtime": "7.13.8",
