@@ -1,16 +1,8 @@
-import { React, useState } from "react";
+import { React } from "react";
 import { Card, CardImg, CardImgOverlay, CardBody, CardTitle } from "reactstrap";
-import DishDetailComponent from "./DishDetailComponent";
 import { DISHES as dishes } from "../shared/dishes";
 
 function Menu(props) {
-  const [SelectedDish, SetSelectedDish] = useState(null);
-
-  // const OnDishSelect = (dish) => {
-  //   SetSelectedDish(dish);
-
-  // } => was resulting in infinite loop
-
   const menu = props.dishes.map((dish) => {
     return (
       <div key={dish.id} className="col-12 col-md-5 m-1">
@@ -54,7 +46,6 @@ function Menu(props) {
     <div className="container">
       <div className="row">{menu}</div>
       <div className="row">
-        <DishDetailComponent dish={SelectedDish} />
         <div className="col-12 col-md-5 m-1">
           <Card>
             <CardBody>
