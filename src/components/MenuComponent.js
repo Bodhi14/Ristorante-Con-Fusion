@@ -24,7 +24,11 @@ function Menu(props) {
   const first_dish = dishes[0];
 
   const comment_list = first_dish.comments.map((comm) => {
-    const date = comm.date.substring(0, 10);
+    const date = new Intl.DateTimeFormat("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "2-digit"
+    }).format(new Date(Date.parse(comm.date)));
     const timezone = comm.date.substring(12, 26);
     return (
       <ul>
