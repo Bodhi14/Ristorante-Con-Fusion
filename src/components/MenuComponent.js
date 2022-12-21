@@ -3,7 +3,7 @@ import { Card, CardImg, CardImgOverlay, CardBody, CardTitle } from "reactstrap";
 import DishDetailComponent from "./DishDetailComponent";
 import { DISHES as dishes } from "../shared/dishes";
 
-function Menu(obj) {
+function Menu(props) {
   const [SelectedDish, SetSelectedDish] = useState(null);
 
   // const OnDishSelect = (dish) => {
@@ -11,10 +11,14 @@ function Menu(obj) {
 
   // } => was resulting in infinite loop
 
-  const menu = obj.dishes.map((dish) => {
+  const menu = props.dishes.map((dish) => {
     return (
       <div key={dish.id} className="col-12 col-md-5 m-1">
-        <Card onClick={() => SetSelectedDish(dish)}>
+        <Card
+          onClick={() => {
+            props.onClick(dish.id);
+          }}
+        >
           <CardImg width="100%" src={dish.image} alt={dish.name} />
 
           <CardImgOverlay>
