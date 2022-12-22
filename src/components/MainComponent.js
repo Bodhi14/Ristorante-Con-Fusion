@@ -6,6 +6,14 @@ import { DISHES } from "../shared/dishes";
 import DishDetailComponent from "./DishDetailComponent";
 import Footer from "../components/FooterComponent";
 import Header from "./HeaderComponent";
+import Home from "./HomeComponent";
+import {
+  BrowserRouter,
+  Switch,
+  Redirect,
+  Route,
+  Routes
+} from "react-router-dom";
 
 class Main extends Component {
   componentDidMount() {
@@ -31,20 +39,48 @@ class Main extends Component {
   render() {
     console.log("MainComponent render invoked");
 
+    const HomePage = () => {
+      return (
+        <>
+          <Home />
+        </>
+      );
+    };
+
+    const MenuPage = () => {
+      return (
+        <>
+          <Menu
+            dishes={this.state.dishes}
+            onClick={(dishId) => this.onDishSelect(dishId)}
+          />
+        </>
+      );
+    };
+
+    const DishDetailComponentPage = () => {
+      return (
+        <>
+          <DishDetailComponent
+            dish={
+              this.state.dishes.filter(
+                (dish) => dish.id === this.state.selectedDish
+              )[0]
+            }
+          />
+        </>
+      );
+    };
+
     return (
       <React.Fragment>
         <Header />
-        <Menu
-          dishes={this.state.dishes}
-          onClick={(dishId) => this.onDishSelect(dishId)}
-        />
-        <DishDetailComponent
-          dish={
-            this.state.dishes.filter(
-              (dish) => dish.id === this.state.selectedDish
-            )[0]
-          }
-        />
+        <Switch>
+          <Route path="/home" component={HomePage} />
+          <Route exact path="/menu" component={MenuPage} />
+          <Route exact path="/about" component={DishDetailComponentPage} />
+          <Redirect to="/home" />
+        </Switch>
         <Footer />
       </React.Fragment>
     );
