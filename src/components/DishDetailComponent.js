@@ -1,15 +1,28 @@
+import { Component } from "react";
 import { Card, CardImg, CardText, CardBody, CardTitle } from "reactstrap";
 
-function DishDetailComponent(props) {
-  if(props.dish!=null) {
+class DishDetailComponent extends Component {
+ 
+  componentDidMount() {
+    console.log("DishDetailComponent Mounted")
+  }
+
+  componentDidUpdate() {
+    console.log("DishDetailComponent Updated");
+  }
+
+  render() {
+  console.log("Dish Detail Component Rendered");
+  
+  if(this.props.dish!=null) {
     return(
       <>
       <div className="col-12 col-md-5 m-1">
      <Card>
-       <CardImg width="100%" src={props.dish.image} alt="image not loaded" />
+       <CardImg width="100%" src={this.props.dish.image} alt="image not loaded" />
        <CardBody>
-         <CardTitle>{props.dish.name}</CardTitle>
-         <CardText>{props.dish.description}</CardText>
+         <CardTitle>{this.props.dish.name}</CardTitle>
+         <CardText>{this.props.dish.description}</CardText>
        </CardBody>
       </Card>
       </div>
@@ -21,6 +34,7 @@ function DishDetailComponent(props) {
     <div>
     </div>
   )
+}
 }
 
 export default DishDetailComponent;

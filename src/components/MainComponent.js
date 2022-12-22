@@ -1,12 +1,19 @@
 // will be acting as a pseudo container component
 
-import { Component } from "react";
-import { Navbar, NavbarBrand } from "reactstrap";
+import React, { Component } from "react";
 import Menu from "./MenuComponent";
 import { DISHES } from "../shared/dishes";
 import DishDetailComponent from "./DishDetailComponent";
+import Header from "./HeaderComponent";
 
 class Main extends Component {
+  componentDidMount() {
+    console.log("MainComponent ComponentDidMount invoked");
+  }
+
+  componentDidUpdate() {
+    console.log("MainComponent ComponentDidUpdate invoked");
+  }
   constructor(props) {
     super(props);
 
@@ -21,13 +28,11 @@ class Main extends Component {
   }
 
   render() {
+    console.log("MainComponent render invoked");
+
     return (
-      <div>
-        <Navbar dark color="primary">
-          <div className="container">
-            <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
-          </div>
-        </Navbar>
+      <React.Fragment>
+        <Header />
         <Menu
           dishes={this.state.dishes}
           onClick={(dishId) => this.onDishSelect(dishId)}
@@ -39,7 +44,7 @@ class Main extends Component {
             )[0]
           }
         />
-      </div>
+      </React.Fragment>
     );
   }
 }
