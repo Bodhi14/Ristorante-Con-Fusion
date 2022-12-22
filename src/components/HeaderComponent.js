@@ -1,17 +1,16 @@
-import React, { Component } from "react";
-import { Navbar, NavbarBrand, Jumbotron } from "reactstrap";
+import React, { Component, Fragment } from "react";
+import { Navbar, NavbarBrand } from "reactstrap";
 
-// React Fragment is used to group together multiple React Elements
 class Header extends Component {
   render() {
     return (
-      <div>
+      <React.Fragment>
         <Navbar dark color="primary">
           <div className="container">
             <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
           </div>
         </Navbar>
-        <Jumbotron>
+        <div className="jumbotron">
           <div className="container">
             <div className="row row-header">
               <div className="col-12 col-sm-6">
@@ -24,8 +23,8 @@ class Header extends Component {
               </div>
             </div>
           </div>
-        </Jumbotron>
-      </div>
+        </div>
+      </React.Fragment>
     );
   }
 }

@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import Menu from "./MenuComponent";
 import { DISHES } from "../shared/dishes";
 import DishDetailComponent from "./DishDetailComponent";
+import Footer from "../components/FooterComponent";
 import Header from "./HeaderComponent";
 
 class Main extends Component {
@@ -44,6 +45,7 @@ class Main extends Component {
             )[0]
           }
         />
+        <Footer />
       </React.Fragment>
     );
   }
